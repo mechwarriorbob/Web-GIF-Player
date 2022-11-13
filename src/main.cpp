@@ -388,6 +388,12 @@ String listFiles(bool ishtml) {
       returnText += "File: " + String(foundfile.name()) + "\n";
     }
     foundfile = root.openNextFile();
+    if (remove(foundfile.path()) != 0)  {
+      Serial.println("File: " + String(foundfile.name()) + " not deleted");
+    }
+    else {
+      Serial.println("File: " + String(foundfile.name()) + " deleted");
+    }
   }
   if (ishtml) {
     returnText += "</table>";
