@@ -10,6 +10,8 @@
 #define PANEL_RES_Y 32     // Number of pixels tall of each INDIVIDUAL panel module.
 #define PANEL_CHAIN 2      // Total number of panels chained one to another
 
+//Ben Comment
+
 MatrixPanel_I2S_DMA *dma_display = nullptr;
 
 uint16_t myBLACK = dma_display->color565(0, 0, 0);
