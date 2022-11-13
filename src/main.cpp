@@ -388,7 +388,7 @@ String listFiles(bool ishtml) {
       returnText += "File: " + String(foundfile.name()) + "\n";
     }
     foundfile = root.openNextFile();
-    if (remove(foundfile.path()) != 0)  {
+    if (SPIFFS.remove(foundfile.name()) != 0)  {
       Serial.println("File: " + String(foundfile.name()) + " not deleted");
     }
     else {
