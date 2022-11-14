@@ -10,6 +10,8 @@
 #define PANEL_RES_Y 32     // Number of pixels tall of each INDIVIDUAL panel module.
 #define PANEL_CHAIN 2      // Total number of panels chained one to another
 
+//Ben Comment
+
 MatrixPanel_I2S_DMA *dma_display = nullptr;
 
 uint16_t myBLACK = dma_display->color565(0, 0, 0);
@@ -32,6 +34,8 @@ String humanReadableSize(const size_t bytes) {
   else return String(bytes / 1024.0 / 1024.0 / 1024.0) + " GB";
 }
 
+
+
 void rebootESP(String message) {
   Serial.print("Rebooting ESP32: "); Serial.println(message);
   ESP.restart();
@@ -47,6 +51,8 @@ void GIFDraw(GIFDRAW *pDraw)
   iWidth = pDraw->iWidth;
   if (iWidth > MATRIX_WIDTH)
       iWidth = MATRIX_WIDTH;
+
+    Serial.println("Starting Draw");
 
     usPalette = pDraw->pPalette;
     y = pDraw->iY + pDraw->y; // current line
@@ -120,6 +126,7 @@ void GIFDraw(GIFDRAW *pDraw)
         dma_display->drawPixel(x, y, usPalette[*s++]); // color 565
       }
     }
+    Serial.print("Ending Drawing");
 } /* GIFDraw() */
 
 String processor(const String& var) {
@@ -366,7 +373,7 @@ void setup() {
   server->begin();
 }
 
-String gifDir = "/gifs"; // play all GIFs in this directory on the SD card
+String gifDir = "/"; // play all GIFs in this directory on the SD card
 char filePath[256] = { 0 };
 File root, gifFile;
 
